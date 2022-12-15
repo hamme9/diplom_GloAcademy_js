@@ -11,8 +11,7 @@ const calc = () => {
         
             if(e.target === calcType || e.target === calcInput || 
                 e.target === calcMaterial) {
-    
-                console.log(+calcType.value * +calcInput.value * +calcMaterial.value);
+
     
                 calcTotal.value = ((+calcType.value * +calcInput.value * +calcMaterial.value).toFixed(1))
             }
