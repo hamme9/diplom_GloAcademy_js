@@ -1,19 +1,19 @@
 import { checkValidation } from "./checkValidation.js" 
 
 const validation = () => {
-    // const inputsCalc = document.querySelectorAll('.calc-block input')
+    const calcInput = document.querySelector('#calc-input')
     const inputsText = document.querySelectorAll('input[name=fio]')
     const inputsPhone = document.querySelectorAll('input[name=phone]')
 
     
 
-    // const validationCalc = () => {
-    //     inputsCalc.forEach((item) => {
-    //         item.addEventListener('input', (e) => {
-    //             e.target.value = e.target.value.replace(/\D+/,"")
-    //         });
-    //     });
-    // };
+    const validationCalc = () => {
+        if(calcInput) {
+            calcInput.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/\D+/,"")
+            });
+        }
+    };
 
     const validationName = () => {
         inputsText.forEach((item) => {
@@ -42,7 +42,7 @@ const validation = () => {
     };
 
 
-    // validationCalc();
+    validationCalc();
     validationPhone();
     validationName();
 

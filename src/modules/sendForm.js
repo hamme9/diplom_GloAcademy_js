@@ -5,14 +5,6 @@ const sendForm = ({
     someElement = [] 
 }) => {
     const form = document.querySelector(`form[name=${formId}]`)
-    // const sub = form.querySelector('button[type=submit]')
-    // // const formElements = form.querySelectorAll('input')
-    // sub.addEventListener('submit', (e) => {
-    //     e.preventDefault()
-
-    // })
-    // console.log(sub);
-    // console.log(form);
     const statusBlock = document.createElement('div')
     const loadText = 'Загрузка...'
     const errorText = 'Ошибка'
@@ -28,50 +20,45 @@ const sendForm = ({
         }).then((response) => response.json())
     }
     
-    // const clearCalc = () => {
-    //     const inputsCalc = document.querySelectorAll('.calc-block input')
-    //     const calcType = document.querySelector('.calc-type')
-    //     const total = document.querySelector('#total')
-    //     calcType.value = ''
-    //     total.textContent = '0'
-    //     inputsCalc.forEach((item) => {
-    //         item.value = ''
-    //     });
-    // }
+    const clearCalc = () => {
+        
+        const calcType = document.querySelector('#calc-type')
+        const calcInput = document.querySelector('#calc-input')
+        const calcTotal = document.querySelector('#calc-total')
+        const calcMaterial = document.querySelector('#calc-type-material')
+        if(calcType) {
+            calcType.selectedIndex = '0'
+            calcInput.value = ''
+            calcTotal.value = ''
+            calcMaterial.selectedIndex = '0'
+        }
+    }
 
     const getSomeElement = () => {
         const formElements = form.querySelectorAll('input')
         const formBody = {}
         const formData = new FormData(form)
 
-        statusBlock.style.color = 'white'
+        statusBlock.style.color = 'black'
+        statusBlock.style.textAlign = 'center'
         form.append(statusBlock)
 
         formData.forEach((value, key) => {
-            if(key === 'user_message') {
-                if(value === '') {
-                    return
-                }
-            }
             formBody[key] = value
         })
 
-        // someElement.forEach(elem => {
-        //     const element = document.getElementById(elem.id)
-        //     const calcType = document.querySelector('.calc-type')
-        //     const calcSquare = document.querySelector('.calc-square')
-        //     const calcCount = document.querySelector('.calc-count')
-        //     const calcDay = document.querySelector('.calc-day')
-        //     if(elem.type === 'block' && element.textContent != '0') {
-        //         formBody[elem.id] = element.textContent
-        //         formBody['Тип объекта'] = calcType.options[calcType.selectedIndex].innerText
-        //         formBody['Общая площадь'] = calcSquare.value
-        //         formBody['Количесво помещений'] = calcCount.value
-        //         formBody['Срок иссполнения'] = calcDay.value
-        //     } else if(elem.type === 'input') {
-        //         formBody[elem.id] = element.value
-        //     }
-        // })
+        someElement.forEach(elem => {
+            const calcType = document.querySelector('#calc-type')
+            const calcInput = document.querySelector('#calc-input')
+            const calcTotal = document.querySelector('#calc-total')
+            const calcMaterial = document.querySelector('#calc-type-material')
+            if(calcType && elem.type === 'block' && calcTotal.value != '') {
+                formBody['Тип объекта'] = calcType.options[calcType.selectedIndex].innerText
+                formBody['Общая площадь'] = calcInput.value
+                formBody['Стоимость'] = calcTotal.value
+                formBody['Тип остекления'] = calcMaterial.options[calcMaterial.selectedIndex].innerText
+            }
+        })
         return { formBody, formElements }
     }
 
@@ -79,7 +66,7 @@ const sendForm = ({
         const {formBody, formElements} = getSomeElement()
 
         if(checkValidation(formElements)) {
-            // clearCalc()
+            clearCalc()
 
             statusBlock.textContent = loadText
 
@@ -88,6 +75,9 @@ const sendForm = ({
                 statusBlock.textContent = successText
                 
                 formElements.forEach(input => {
+                    if(input.value == 'Окна') {
+                        return
+                    }
                     input.value = ''
                     input.classList.remove('success')
                 })

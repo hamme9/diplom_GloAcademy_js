@@ -32,6 +32,7 @@ const slider = () => {
         // Optional parameters
         
         loop: true,
+        allowTouchMove: false,
       
 
         // Navigation arrows

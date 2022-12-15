@@ -147,7 +147,7 @@
 					<div class="form-group">
 						<label for="calc-type" class="text-warning">Балкон/Лоджия</label>
 						<select name="calc-type" class="form-control form-control-sm" id="calc-type">
-						  <option>--</option>
+						  <option value="1">--</option>
 						  <option value="1.2">Балкон</option>
 						  <option value="1.3">Лоджия</option>
 						</select>
@@ -157,7 +157,7 @@
 					<div class="form-group">
 						<label for="calc-type-material" class="text-warning">Выберите тип остекления</label>
 						<select name="calc-type-material" class="form-control form-control-sm" id="calc-type-material">
-						  <option>--</option>
+						  <option value="1">--</option>
 						  <option value="1">Холодное Аллюминием</option>
 						  <option value="2">Теплое ПВХ</option>
 						</select>
@@ -771,7 +771,7 @@
         </div>
         <div class="box-modal_body rf">
             <p class="text-center">Оставьте, пожалуйста, заявку. Мы позвоним Вам в ближайшее время и ответим на все вопросы!</p>
-            <form name="callback-form">
+            <form name="callback-form1">
                 <div class="form-group">
                     <input type="text" name="fio" class="form-control required" placeholder="Ваше имя*">
                 </div>
@@ -817,7 +817,7 @@
         </div>
         <div class="box-modal_body rf">
             <p class="text-center">Оставьте заявку и специалист свяжется с Вами в ближайшее время!</p>
-            <form name="application-form">
+            <form name="application-form1">
                 <div class="form-group">
                     <input type="text" name="fio" class="form-control required" placeholder="Ваше имя*">
                 </div>
@@ -905,6 +905,10 @@
 
 	<div class="smooth-scroll">
 		<img class="smooth-scroll__img" src="./images/prev_arrow.png" alt="smooth">
+	</div>
+	<div class="img-modal img-modal__style">
+		<span class="img-modal__close">x</span>
+		<img src="images/documents/original/document4.jpg" class="img-modal__content">
 	</div>
     
 </body>

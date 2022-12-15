@@ -1580,6 +1580,7 @@ input.error {
 }
 
 .overlay {
+  z-index: 1;
   display: none;
   position: fixed;
   top: 0;
@@ -1676,6 +1677,52 @@ input.error {
     0 0 8px rgba(0, 144, 42, 0.6);
 }
 
+.smooth-scroll {
+  display: none;
+  cursor: pointer;
+}
+
+.img-modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.img-modal__close:hover {
+  color: white;
+}
+
+.img-modal__style {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.img-modal__content {
+    margin: auto;
+    display: block;
+    max-width: 400px;
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@media only screen and (max-width: 700px){
+  .img-modal__content {
+      width: 100%;
+  }
+}
 
 @media (min-width: 576px) {
   .benefits-wrap {
