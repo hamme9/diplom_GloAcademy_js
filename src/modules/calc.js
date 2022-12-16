@@ -6,14 +6,17 @@ const calc = () => {
     const calcBlock = document.querySelector('#calc')
 
 
+    console.log(calcType.selectedIndex);
     if(calcBlock) {
         calcBlock.addEventListener('input', (e) => {
         
             if(e.target === calcType || e.target === calcInput || 
                 e.target === calcMaterial) {
 
-    
-                calcTotal.value = ((+calcType.value * +calcInput.value * +calcMaterial.value).toFixed(1))
+                    if(calcType.selectedIndex != '0' && calcInput.value != '') {
+                        calcTotal.value = ((+calcType.value * +calcInput.value * +calcMaterial.value).toFixed(1))
+                    }
+                
             }
         })
     }

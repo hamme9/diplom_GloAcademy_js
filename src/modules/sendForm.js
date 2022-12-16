@@ -75,7 +75,7 @@ const sendForm = ({
                 statusBlock.textContent = successText
                 
                 formElements.forEach(input => {
-                    if(input.value == 'Окна') {
+                    if(input.value == 'Окна' || input.value == 'Балконы') {
                         return
                     }
                     input.value = ''
